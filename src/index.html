@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Bora Rotana's Codédex-inspired portfolio profile.">
+	<title>Bora Rotana | Codédex Profile Portfolio</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg: #f8eedc;
+			--bg-2: #fff6ea;
+			--panel: rgba(255, 251, 243, 0.82);
+			--panel-strong: rgba(255, 255, 255, 0.95);
+			--line: rgba(74, 52, 26, 0.11);
+			--text: #13213a;
+			--muted: #62646f;
+			--accent: #ff8a2b;
+			--accent-2: #3776f4;
+			--accent-3: #ffb44d;
+			--shadow: 0 22px 60px rgba(88, 56, 16, 0.12);
+			--radius-xl: 28px;
+			--radius-lg: 22px;
+			--radius-md: 16px;
+			--radius-sm: 12px;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+			color: var(--text);
+			font-family: "Space Grotesk", system-ui, sans-serif;
+			background:
+				radial-gradient(circle at top left, rgba(255, 173, 85, 0.33), transparent 22%),
+				radial-gradient(circle at top right, rgba(55, 118, 244, 0.14), transparent 26%),
+				linear-gradient(180deg, #fff7ea 0%, #f9efdd 54%, #efe2cf 100%);
+		}
+
+		body::before {
+			content: "";
+			position: fixed;
+			inset: 0;
+			pointer-events: none;
+			background-image: linear-gradient(rgba(33, 26, 18, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(33, 26, 18, 0.035) 1px, transparent 1px);
+			background-size: 56px 56px;
+			mask-image: radial-gradient(circle at center, black 45%, transparent 100%);
+			opacity: 0.35;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		p, h1, h2, h3, dl, ul {
+			margin: 0;
+		}
+
+		ul {
+			padding-left: 1.1rem;
+		}
+
+		.page-shell {
+			width: min(1180px, calc(100% - 32px));
+			margin: 0 auto;
+			padding: 22px 0 40px;
+			display: grid;
+			gap: 18px;
+		}
+
+		.topbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 16px;
+		}
+
+		.brand {
+			display: inline-flex;
+			align-items: center;
+			gap: 12px;
+		}
+
+		.brand-mark {
+			width: 48px;
+			height: 48px;
+			display: grid;
+			place-items: center;
+			border-radius: 16px;
+			border: 1px solid var(--line);
+			background: linear-gradient(135deg, rgba(255, 173, 85, 0.33), rgba(55, 118, 244, 0.3));
+			box-shadow: var(--shadow);
+			font-family: "IBM Plex Mono", monospace;
+			font-weight: 700;
+		}
+
+		.brand strong {
+			display: block;
+			font-size: 1rem;
+		}
+
+		.brand small,
+		.topnav {
+			color: var(--muted);
+			font-family: "IBM Plex Mono", monospace;
+			font-size: 0.85rem;
+		}
+
+		.brand small {
+			display: block;
+			margin-top: 2px;
+		}
+
+		.topnav {
+			display: flex;
+			gap: 14px;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+		}
+
+		.profile-page {
+			display: grid;
+			gap: 20px;
+		}
+
+		.card {
+			position: relative;
+			overflow: hidden;
+			border: 1px solid var(--line);
+			border-radius: var(--radius-xl);
+			background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 236, 0.94));
+			box-shadow: var(--shadow);
+		}
+
+		.card::after {
+			content: "";
+			position: absolute;
+			inset: auto -12% -28% auto;
+			width: 220px;
+			height: 220px;
+			border-radius: 999px;
+			background: radial-gradient(circle, rgba(255, 140, 43, 0.18), transparent 66%);
+			pointer-events: none;
+		}
+
+		.profile-header {
+			padding: 0;
+			overflow: hidden;
+		}
+
+		.cover-art {
+			height: 126px;
+			background:
+				linear-gradient(180deg, rgba(18, 24, 38, 0.18), rgba(18, 24, 38, 0.36)),
+				url('data/cover_files/banner-v2.png') center center / cover no-repeat;
+		}
+
+		.profile-meta {
+			display: grid;
+			grid-template-columns: 126px 1fr;
+			gap: 18px;
+			padding: 0 24px 24px;
+			margin-top: -42px;
+		}
+
+		.avatar-wrap {
+			align-self: start;
+		}
+
+		.avatar-ring {
+			width: 126px;
+			height: 126px;
+			padding: 6px;
+			border-radius: 999px;
+			background: conic-gradient(from 180deg, rgba(255, 148, 50, 0.28), rgba(55, 118, 244, 0.72), rgba(255, 182, 88, 0.64), rgba(255, 148, 50, 0.28));
+			box-shadow: var(--shadow);
+			overflow: hidden;
+		}
+
+		.avatar {
+			width: 100%;
+			height: 100%;
+			display: block;
+			border-radius: 999px;
+			border: 1px solid rgba(64, 48, 28, 0.08);
+			object-fit: cover;
+			object-position: center top;
+			background: #faefdd;
+		}
+
+		.profile-copy {
+			display: grid;
+			gap: 16px;
+			padding-top: 16px;
+		}
+
+		.profile-title-row {
+			display: flex;
+			align-items: start;
+			justify-content: space-between;
+			gap: 16px;
+			flex-wrap: wrap;
+		}
+
+		.profile-title-row h1 {
+			font-size: clamp(2rem, 4vw, 3.3rem);
+			line-height: 1;
+			letter-spacing: -0.05em;
+			background: linear-gradient(180deg, #ffffff 0 50%, #2d1808 50% 100%);
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+		}
+
+		.handle,
+		.profile-links,
+		.social-counts,
+		.tabs,
+		.eyebrow,
+		.project-tag,
+		.timeline-year {
+			font-family: "IBM Plex Mono", monospace;
+		}
+
+		.handle {
+			margin-top: 6px;
+			color: var(--muted);
+		}
+
+		.lead {
+			color: var(--muted);
+			line-height: 1.7;
+			max-width: 62ch;
+		}
+
+		.profile-links,
+		.social-counts {
+			display: flex;
+			gap: 14px;
+			flex-wrap: wrap;
+			color: var(--muted);
+			font-size: 0.88rem;
+		}
+
+			.profile-links a {
+				display: inline-flex;
+				align-items: center;
+				min-height: 40px;
+				padding: 0.62rem 0.92rem;
+				border-radius: 999px;
+				border: 1px solid rgba(64, 48, 28, 0.1);
+				background: rgba(255, 255, 255, 0.78);
+				color: var(--text);
+				font-family: "IBM Plex Mono", monospace;
+				font-size: 0.82rem;
+			}
+
+			.profile-links button {
+				display: inline-flex;
+				align-items: center;
+				min-height: 40px;
+				padding: 0.62rem 0.92rem;
+				border-radius: 999px;
+				border: 1px solid rgba(64, 48, 28, 0.1);
+				background: rgba(255, 255, 255, 0.78);
+				color: var(--text);
+				font-family: "IBM Plex Mono", monospace;
+				font-size: 0.82rem;
+				cursor: pointer;
+			}
+
+		.social-counts {
+			gap: 18px;
+		}
+
+		.social-counts div {
+			display: grid;
+			gap: 4px;
+		}
+
+		.social-counts strong {
+			font-size: 1.1rem;
+			color: var(--text);
+		}
+
+		.button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 46px;
+			padding: 0.75rem 1.1rem;
+			border-radius: 999px;
+			border: 1px solid transparent;
+			transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+		}
+
+		.button:hover,
+		.button:focus-visible,
+		.tab:hover,
+		.tab:focus-visible,
+		.topnav a:hover,
+		.topnav a:focus-visible,
+		.contact-links a:hover,
+		.contact-links a:focus-visible {
+			transform: translateY(-1px);
+		}
+
+		.button-primary {
+			color: #2d1808;
+			background: linear-gradient(135deg, #ffd38f, #ff9f4e);
+		}
+
+		.tabs {
+			display: flex;
+			gap: 10px;
+			padding: 0 24px 24px;
+			border-top: 1px solid var(--line);
+			flex-wrap: wrap;
+		}
+
+		.tab {
+			display: inline-flex;
+			align-items: center;
+			min-height: 44px;
+			padding: 0.68rem 1rem;
+			border-radius: 999px;
+			color: var(--muted);
+			border: 1px solid transparent;
+			background: transparent;
+			font-size: 0.88rem;
+		}
+
+		.tab.is-active {
+			color: var(--text);
+			background: rgba(255, 255, 255, 0.82);
+			border-color: var(--line);
+		}
+
+			.profile-section {
+				display: grid;
+			}
+
+			.section-shell {
+				display: grid;
+				gap: 20px;
+			}
+
+		.profile-grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 20px;
+		}
+
+		.section {
+			display: grid;
+			gap: 18px;
+			padding: 24px;
+		}
+
+		.profile-panel {
+			display: grid;
+			gap: 18px;
+		}
+
+		.eyebrow {
+			color: var(--accent);
+			font-size: 0.78rem;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+		}
+
+		.section-heading {
+			display: grid;
+			gap: 8px;
+		}
+
+		.compact-heading h2 {
+			font-size: 1.4rem;
+		}
+
+		.profile-rank {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 14px;
+		}
+
+		.profile-rank div {
+			padding: 14px;
+			border-radius: 18px;
+			border: 1px solid rgba(64, 48, 28, 0.08);
+			background: rgba(255, 255, 255, 0.7);
+		}
+
+		.profile-rank strong {
+			display: block;
+			margin-top: 6px;
+			font-size: 1.1rem;
+		}
+
+		.muted-label {
+			color: var(--muted);
+			font-size: 0.76rem;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+		}
+
+		.progress-block {
+			display: grid;
+			gap: 8px;
+		}
+
+		.progress-labels {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+			color: var(--muted);
+			font-family: "IBM Plex Mono", monospace;
+			font-size: 0.8rem;
+		}
+
+		.progress-bar {
+			height: 10px;
+			padding: 2px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.8);
+			border: 1px solid rgba(64, 48, 28, 0.08);
+			overflow: hidden;
+		}
+
+		.progress-bar span {
+			display: block;
+			width: 0;
+			height: 100%;
+			border-radius: inherit;
+			background: linear-gradient(90deg, #ff9d45, var(--accent-2));
+			transition: width 1s ease;
+		}
+
+		.character-box {
+			display: grid;
+			justify-items: center;
+			gap: 10px;
+			padding: 18px;
+			border-radius: 22px;
+			border: 1px solid rgba(64, 48, 28, 0.08);
+			background: rgba(255, 255, 255, 0.72);
+		}
+
+		.character-box img {
+			width: min(100%, 220px);
+			height: auto;
+		}
+
+		.character-box p,
+		.empty-state {
+			color: var(--muted);
+		}
+
+		.empty-state {
+			padding: 16px 18px;
+			border-radius: 18px;
+			border: 1px dashed rgba(64, 48, 28, 0.16);
+			background: rgba(255, 255, 255, 0.62);
+		}
+
+		.skill-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+		}
+
+		.skill-chip {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.55rem;
+			padding: 0.58rem 0.85rem;
+			border-radius: 18px;
+			border: 1px solid rgba(64, 48, 28, 0.1);
+			background: rgba(255, 255, 255, 0.78);
+			font-family: "IBM Plex Mono", monospace;
+			font-size: 0.78rem;
+			font-weight: 600;
+			color: var(--ink);
+			box-shadow: 0 8px 18px rgba(64, 48, 28, 0.04);
+		}
+
+		.skill-icon {
+			width: 1.9rem;
+			height: 1.4rem;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 10px;
+			background: linear-gradient(135deg, rgba(255, 154, 54, 0.18), rgba(55, 118, 244, 0.14));
+			border: 1px solid rgba(64, 48, 28, 0.08);
+		}
+
+		.skill-icon svg {
+			width: 0.72rem;
+			height: 0.72rem;
+			fill: currentColor;
+			display: block;
+		}
+
+		.skill-icon.html { color: #e34f26; }
+		.skill-icon.css { color: #1572b6; }
+		.skill-icon.javascript { color: #f7df1e; }
+		.skill-icon.python { color: #3776ab; }
+		.skill-icon.terminal { color: #3a3f44; }
+		.skill-icon.git { color: #f05032; }
+
+			.work-icon {
+				width: 1.2rem;
+				height: 1.2rem;
+				display: inline-grid;
+				place-items: center;
+				flex: 0 0 auto;
+				color: var(--accent-2);
+			}
+
+			.work-icon svg {
+				width: 1rem;
+				height: 1rem;
+				fill: currentColor;
+				display: block;
+			}
+
+			.work-icon.github { color: #24292f; }
+			.work-icon.linkedin { color: #0a66c2; }
+			.work-icon.email { color: #ff8a2b; }
+
+		.project-grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 18px;
+		}
+
+		.project-card {
+			padding: 22px;
+			border-radius: var(--radius-lg);
+			border: 1px solid rgba(64, 48, 28, 0.08);
+			background: rgba(255, 255, 255, 0.72);
+		}
+
+		.project-card h3 {
+			margin: 10px 0 8px;
+			font-size: 1.3rem;
+		}
+
+		.project-card p,
+		.timeline-item p,
+		.contact-block p {
+			color: var(--muted);
+			line-height: 1.7;
+		}
+
+		.project-tag,
+		.timeline-year {
+			color: var(--accent);
+			font-size: 0.78rem;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+		}
+
+		.timeline {
+			display: grid;
+			gap: 14px;
+		}
+
+		.timeline-item {
+			display: grid;
+			grid-template-columns: 84px 1fr;
+			gap: 16px;
+			padding-top: 14px;
+			border-top: 1px solid rgba(64, 48, 28, 0.08);
+		}
+
+		.timeline-item:first-child {
+			border-top: 0;
+			padding-top: 0;
+		}
+
+		.contact-card {
+			display: grid;
+			grid-template-columns: 1.2fr 0.8fr;
+			gap: 18px;
+			align-items: center;
+		}
+
+		.contact-links {
+			display: grid;
+			gap: 12px;
+			justify-items: start;
+		}
+
+		.contact-links a {
+			display: inline-flex;
+			align-items: center;
+			min-height: 44px;
+			padding: 0.75rem 1rem;
+			border-radius: 999px;
+			border: 1px solid rgba(64, 48, 28, 0.1);
+			background: rgba(255, 255, 255, 0.72);
+			font-family: "IBM Plex Mono", monospace;
+			font-size: 0.88rem;
+		}
+
+		.contact-links .contact-link-note {
+			display: inline-flex;
+			align-items: center;
+			min-height: 44px;
+			padding: 0.75rem 1rem;
+			border-radius: 999px;
+			border: 1px solid rgba(64, 48, 28, 0.08);
+			background: rgba(255, 243, 229, 0.78);
+			font-family: "IBM Plex Mono", monospace;
+			font-size: 0.84rem;
+			color: var(--muted);
+		}
+
+		.contact-points {
+			display: grid;
+			gap: 12px;
+			margin: 16px 0 18px;
+			padding: 16px;
+			border-radius: var(--radius-md);
+			border: 1px solid rgba(64, 48, 28, 0.08);
+			background: rgba(255, 255, 255, 0.62);
+		}
+
+		.contact-point {
+			display: grid;
+			grid-template-columns: 18px 1fr;
+			gap: 10px;
+			align-items: start;
+			color: var(--muted);
+			line-height: 1.6;
+		}
+
+		.contact-point strong {
+			color: var(--text);
+		}
+
+		.contact-point::before {
+			content: "";
+			width: 10px;
+			height: 10px;
+			margin-top: 0.4rem;
+			border-radius: 999px;
+			background: linear-gradient(135deg, var(--accent), var(--accent-2));
+			box-shadow: 0 0 0 4px rgba(255, 154, 54, 0.1);
+		}
+
+		.contact-note {
+			margin-top: 16px;
+			font-family: "IBM Plex Mono", monospace;
+			font-size: 0.84rem;
+			color: var(--muted);
+		}
+
+		.contact-grid {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 12px;
+			margin: 16px 0 18px;
+		}
+
+		.contact-tile {
+			padding: 16px;
+			border-radius: var(--radius-md);
+			border: 1px solid rgba(64, 48, 28, 0.08);
+			background: rgba(255, 255, 255, 0.62);
+		}
+
+		.contact-tile h3 {
+			margin: 0 0 8px;
+			font-size: 1rem;
+		}
+
+		.contact-tile p {
+			margin: 0;
+			color: var(--muted);
+			line-height: 1.6;
+		}
+
+		.contact-tile ul {
+			margin: 12px 0 0;
+			padding-left: 18px;
+			color: var(--muted);
+			line-height: 1.6;
+		}
+
+		.contact-tile li + li {
+			margin-top: 6px;
+		}
+
+			.toast {
+				position: fixed;
+				right: 20px;
+				bottom: 20px;
+				padding: 0.85rem 1rem;
+				border-radius: 999px;
+				border: 1px solid rgba(64, 48, 28, 0.12);
+				background: rgba(255, 255, 255, 0.92);
+				box-shadow: var(--shadow);
+				font-family: "IBM Plex Mono", monospace;
+				font-size: 0.82rem;
+				transform: translateY(12px);
+				opacity: 0;
+				pointer-events: none;
+				transition: opacity 0.2s ease, transform 0.2s ease;
+			}
+
+			.toast.is-visible {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+		.footer {
+			text-align: center;
+			color: var(--muted);
+			font-family: "IBM Plex Mono", monospace;
+			font-size: 0.82rem;
+			padding-top: 4px;
+		}
+
+		.reveal {
+			opacity: 0;
+			transform: translateY(18px);
+			transition: opacity 0.7s ease, transform 0.7s ease;
+		}
+
+		.reveal.is-visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		@media (max-width: 960px) {
+			.topbar,
+			.profile-meta,
+			.profile-grid,
+			.project-grid,
+			.contact-card,
+			.contact-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.topbar {
+				display: grid;
+			}
+
+			.profile-meta {
+				margin-top: -36px;
+			}
+		}
+
+		@media (max-width: 720px) {
+			.page-shell {
+				width: min(100% - 20px, 1180px);
+				padding-top: 16px;
+			}
+
+			.cover-art {
+				height: 104px;
+			}
+
+			.profile-meta {
+				padding: 0 18px 18px;
+				margin-top: -30px;
+			}
+
+			.contact-grid {
+				margin: 14px 0 16px;
+			}
+
+			.contact-tile {
+				padding: 14px;
+			}
+
+			.avatar-ring {
+				width: 112px;
+				height: 112px;
+				padding: 5px;
+			}
+
+			.tabs {
+				padding: 0 18px 18px;
+				overflow-x: auto;
+			}
+
+			.profile-rank {
+				grid-template-columns: 1fr;
+			}
+
+			.timeline-item {
+				grid-template-columns: 1fr;
+				gap: 8px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="page-shell">
+		<header class="topbar">
+			<a class="brand" href="#home" aria-label="Bora Rotana home">
+				<span class="brand-mark">BR</span>
+				<span>
+					<strong>Bora Rotana</strong>
+					<small>Professional Portfolio Profile</small>
+				</span>
+			</a>
+
+			<nav class="topnav" aria-label="Primary navigation">
+				<a href="#overview">Overview</a>
+				<a href="#projects">Projects</a>
+				<a href="#posts">Posts</a>
+				<a href="#contact">Contact</a>
+			</nav>
+		</header>
+
+		<main id="home" class="profile-page">
+			<section class="profile-header card reveal" aria-label="Profile header">
+				<div class="cover-art"></div>
+
+				<div class="profile-meta">
+					<div class="avatar-wrap">
+						<div class="avatar-ring">
+							<img class="avatar" src="data/Pnlu.png" alt="Bora Rotana avatar" />
+						</div>
+					</div>
+
+					<div class="profile-copy">
+						<div class="profile-title-row">
+							<div>
+								<h1>BORA ROTANA</h1>
+								<p class="handle">@borarotana</p>
+							</div>
+							<a class="button button-primary" href="#contact">Contact</a>
+						</div>
+
+						<p class="lead">
+							Frontend developer focused on polished interfaces, responsive layouts, and product-oriented web experiences.
+						</p>
+
+						<div class="profile-links" aria-label="Work links">
+							<a href="https://github.com/borarotana" target="_blank" rel="noreferrer"><span class="work-icon github" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.24c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48v-1.68c-2.78.62-3.37-1.37-3.37-1.37-.46-1.18-1.12-1.49-1.12-1.49-.91-.64.07-.63.07-.63 1.01.07 1.55 1.06 1.55 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.64-1.38-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.32.1-2.73 0 0 .85-.27 2.8 1.05a9.3 9.3 0 0 1 2.55-.35c.87 0 1.74.12 2.55.35 1.95-1.32 2.8-1.05 2.8-1.05.55 1.41.2 2.47.1 2.73.64.72 1.03 1.64 1.03 2.76 0 3.93-2.34 4.8-4.57 5.05.36.32.68.95.68 1.92v2.84c0 .26.18.59.69.49A10.04 10.04 0 0 0 22 12.24C22 6.58 17.52 2 12 2Z"/></svg></span>GitHub</a>
+							<a href="https://www.linkedin.com/in/borarotana" target="_blank" rel="noreferrer"><span class="work-icon linkedin" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.94 6.5A2.15 2.15 0 1 1 2.64 6.5a2.15 2.15 0 0 1 4.3 0ZM3.05 8.98h3.78V22H3.05V8.98Zm6 0h3.62v1.78h.05c.5-.95 1.75-1.95 3.6-1.95 3.85 0 4.56 2.53 4.56 5.82V22h-3.78v-6.03c0-1.44-.03-3.3-2.01-3.3-2.02 0-2.33 1.58-2.33 3.2V22H9.05V8.98Z"/></svg></span>LinkedIn</a>
+							<a href="mailto:dev.rotana@gmail.com"><span class="work-icon email" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6.75A2.75 2.75 0 0 1 5.75 4h12.5A2.75 2.75 0 0 1 21 6.75v10.5A2.75 2.75 0 0 1 18.25 20H5.75A2.75 2.75 0 0 1 3 17.25V6.75Zm2.75-.25a.25.25 0 0 0-.25.25v.46l6.5 4.33 6.5-4.33V6.75a.25.25 0 0 0-.25-.25H5.75ZM17.5 9.04l-5.86 3.91a.99.99 0 0 1-1.08 0L4.5 9.04v8.21c0 .14.11.25.25.25h12.5a.25.25 0 0 0 .25-.25V9.04Z"/></svg></span>Email</a>
+						</div>
+					</div>
+				</div>
+
+				<nav class="tabs" aria-label="Profile sections">
+					<a class="tab is-active" href="#overview">Overview</a>
+					<a class="tab" href="#projects">Projects</a>
+					<a class="tab" href="#posts">Posts</a>
+				</nav>
+			</section>
+
+			<section id="overview" class="profile-grid profile-section is-visible">
+				<section class="card section reveal">
+					<div class="section-heading compact-heading">
+						<p class="eyebrow">Profile summary</p>
+						<h2>Overview</h2>
+					</div>
+
+					<div class="profile-rank" aria-label="Profile stats">
+						<div>
+							<p class="muted-label">Level</p>
+							<strong>Beginner</strong>
+						</div>
+						<div>
+							<p class="muted-label">Rank</p>
+							<strong>Software Engineer</strong>
+						</div>
+						<div>
+							<p class="muted-label">Certificates</p>
+							<strong>1</strong>
+						</div>
+						<div>
+							<p class="muted-label">Projects</p>
+							<strong>6+</strong>
+						</div>
+					</div>
+
+					<div class="progress-block">
+						<div class="progress-labels">
+							<span>Frontend Development Focus</span>
+							<span>60 %</span>
+						</div>
+						<div class="progress-bar" data-progress="60"><span></span></div>
+					</div>
+
+					<div class="character-box" aria-label="Character preview">
+						<img src="https://www.codedex.io/images/boy.gif" alt="Animated character preview">
+						<p>borarotana</p>
+					</div>
+				</section>
+
+				<section class="card section reveal">
+					<div class="section-heading compact-heading">
+						<p class="eyebrow">Capabilities</p>
+						<h2>RANK FOCUS</h2>
+					</div>
+
+					<p class="empty-state">Frontend development focus with responsive interfaces, polished layouts, and product-oriented web experiences.</p>
+
+					<div class="section-heading compact-heading">
+						<p class="eyebrow">Technical Stack</p>
+						<h2>SKILLS</h2>
+					</div>
+
+					<div class="skill-list">
+							<span class="skill-chip"><span class="skill-icon html" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 2h16l-1.5 17L12 22 5.5 19 4 2Zm12.9 5.1H7.1l.16 2.1h9.56l-.28 3.2-4.54 1.2-4.5-1.18-.18-2.07h2.3l.06 1.03 2.32.62 2.3-.62.24-2.42H6.9L6.53 4.9h10.9l-.43 2.2Z"/></svg></span><span>HTML</span></span>
+
+							<span class="skill-chip"><span class="skill-icon css" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 2h16l-1.45 17.05L12 22 5.45 19.05 4 2Zm12.78 5.07H7.13l.15 1.99h9.34l-.26 2.96-4.36 1.15-4.34-1.14-.16-1.86h2.21l.06.91 2.23.6 2.21-.6.2-2.15H6.97L6.63 4.95h10.74l-.39 2.12Z"/></svg></span><span>CSS</span></span>
+
+							<span class="skill-chip"><span class="skill-icon javascript" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3Zm10 14.3c.45.78 1.03 1.35 2.03 1.35.84 0 1.38-.42 1.38-1 0-.69-.55-.94-1.48-1.34l-.5-.22c-1.47-.62-2.45-1.39-2.45-3.02 0-1.5 1.14-2.64 2.92-2.64 1.27 0 2.18.44 2.84 1.6l-1.56 1c-.34-.62-.7-.87-1.28-.87-.59 0-.97.38-.97.87 0 .61.38.86 1.25 1.24l.5.22c1.73.74 2.71 1.48 2.71 3.15 0 1.8-1.41 2.78-3.31 2.78-1.86 0-3.06-.88-3.65-2.03l1.57-.89ZM7.2 18.1c.32.57.61 1.05 1.31 1.05.67 0 1.1-.26 1.1-1.27v-6.9h1.93v6.93c0 2-1.17 2.92-2.87 2.92-1.53 0-2.42-.79-2.88-1.75l1.41-.98Z"/></svg></span><span>JavaScript</span></span>
+
+							<span class="skill-chip"><span class="skill-icon python" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.05 2c3.33 0 3.13 1.45 3.13 1.45v2.1h-4.43s-2.2-.25-2.2 2.16v1.52h6.28s2.2-.21 2.2 2.13V15s.33 2.19-2.14 2.19h-1.83v-1.75s.1-2.08-2.16-2.08H7.4s-3.4.44-3.4-3.4V6.45S3.88 2 12.05 2Zm-2.55 1.98a1.02 1.02 0 1 0 0 2.04 1.02 1.02 0 0 0 0-2.04Zm5.46 13.02c-3.33 0-3.13-1.45-3.13-1.45v-2.1h4.43s2.2.25 2.2-2.16v-1.52h-6.28s-2.2.21-2.2-2.13V9s-.33-2.19 2.14-2.19h1.83v1.75s-.1 2.08 2.16 2.08h1.05s3.4-.44 3.4 3.4v3.55s.27 3.41-7.6 3.41Zm2.55-1.98a1.02 1.02 0 1 0 0-2.04 1.02 1.02 0 0 0 0 2.04Z"/></svg></span><span>Python</span></span>
+
+							<span class="skill-chip"><span class="skill-icon terminal" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3V4Zm2 2v12h14V6H5Zm2.2 2.3 2.95 2.95-2.95 2.95 1.4 1.4L11.7 13 8.6 9.9l-1.4 1.4Z"/></svg></span><span>Command Line</span></span>
+
+							<span class="skill-chip"><span class="skill-icon git" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22.7 11.3 12.7 1.3a1 1 0 0 0-1.4 0L9 3.6l3 3a2.1 2.1 0 0 1 2.7 2.7l2.9 2.9a2.1 2.1 0 1 1-1.4 1.4l-2.7-2.7v7.8a2.1 2.1 0 1 1-1.8 0V10.9a2.1 2.1 0 0 1-1-1.8 2.2 2.2 0 0 1 .2-.9l-3.1-3.1L1.3 11.3a1 1 0 0 0 0 1.4l10 10a1 1 0 0 0 1.4 0l10-10a1 1 0 0 0 0-1.4Z"/></svg></span><span>Git &amp; GitHub</span></span>
+					</div>
+				</section>
+			</section>
+
+			<section id="projects" class="card section reveal profile-section is-visible">
+				<div class="section-heading compact-heading">
+					<p class="eyebrow">Selected work</p>
+					<h2>Projects</h2>
+				</div>
+				<p class="empty-state">Representative projects are shown below in the same card-based format used across the portfolio.</p>
+
+				<div class="project-grid">
+					<article class="project-card">
+						<p class="project-tag">Featured project</p>
+						<h3>Codédex-style Portfolio</h3>
+						<p>A profile-inspired portfolio with interactive tabs, layered visuals, and a polished personal brand.</p>
+					</article>
+
+					<article class="project-card">
+						<p class="project-tag">Full-stack booking</p>
+						<h3>Samotsvay Resort</h3>
+						<p>An Express-powered resort site with booking pages, resort navigation, and server-side routing.</p>
+					</article>
+
+					<article class="project-card">
+						<p class="project-tag">Tracking system</p>
+						<h3>Internship Tracker</h3>
+						<p>A full-stack app for managing internship applications, deadlines, interviews, and progress analytics.</p>
+					</article>
+
+					<article class="project-card">
+						<p class="project-tag">Product layout</p>
+						<h3>Operations Dashboard</h3>
+						<p>A structured dashboard concept with clear hierarchy, progress cards, and quick access to key actions.</p>
+					</article>
+				</div>
+			</section>
+
+			<section id="posts" class="card section reveal profile-section is-visible">
+				<div class="section-heading compact-heading">
+					<p class="eyebrow">Updates</p>
+					<h2>Posts</h2>
+				</div>
+				<p class="empty-state">Short, high-signal updates that show progress, craft, and the kind of work you want to be hired for.</p>
+
+				<div class="timeline">
+					<div class="timeline-item">
+						<span class="timeline-year">Launch</span>
+						<p>Built a Codédex-style portfolio that combines a strong visual identity with interactive sections for projects, updates, and contact.</p>
+					</div>
+
+					<div class="timeline-item">
+						<span class="timeline-year">Build</span>
+						<p>Added real project entries for Samotsvay Resort and Internship Tracker to show both full-stack and product-focused work.</p>
+					</div>
+
+					<div class="timeline-item">
+						<span class="timeline-year">Focus</span>
+						<p>Open for freelance frontend work, clean UI builds, and collaboration on polished web experiences that feel production-ready.</p>
+					</div>
+				</div>
+			</section>
+
+			<section id="contact" class="card section contact-card reveal">
+				<div>
+					<p class="eyebrow">Contact</p>
+					<h2>Open for freelance, collabs, and remote jobs.</h2>
+					<p class="contact-block">
+						Reach out for freelance projects, long-term contracts, team collaborations, and platform-based work like Upwork, Freelancer, Fiverr, or Contra.
+					</p>
+
+					<div class="contact-grid" aria-label="Available work types">
+						<div class="contact-tile">
+							<h3>Freelance jobs</h3>
+							<p>Best for landing pages, portfolio sites, dashboards, and UI polish.</p>
+							<ul>
+								<li>Short-term client work</li>
+								<li>One-off builds or redesigns</li>
+								<li>Platform gigs like Upwork or Freelancer</li>
+							</ul>
+						</div>
+
+						<div class="contact-tile">
+							<h3>Collaboration</h3>
+							<p>Good for shared builds with designers, developers, and product teams.</p>
+							<ul>
+								<li>Design handoff support</li>
+								<li>Frontend implementation</li>
+								<li>Team-based feature delivery</li>
+							</ul>
+						</div>
+
+						<div class="contact-tile">
+							<h3>Remote roles</h3>
+							<p>Ideal for frontend work, product support, and steady contract jobs.</p>
+							<ul>
+								<li>Remote frontend positions</li>
+								<li>Long-term contract work</li>
+								<li>Flexible async communication</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="contact-links">
+					<a href="mailto:dev.rotana@gmail.com?subject=Freelance%20project%20inquiry">Email</a>
+					<a href="https://www.linkedin.com/in/borarotana" target="_blank" rel="noreferrer">LinkedIn</a>
+					<a href="https://github.com/borarotana" target="_blank" rel="noreferrer">GitHub</a>
+					<span class="contact-link-note">Upwork / Freelancer / Fiverr / Contra</span>
+					<span class="contact-link-note">Open to collabs and remote contracts</span>
+				</div>
+			</section>
+
+			<div class="toast" id="toast" role="status" aria-live="polite">Email copied to clipboard</div>
+		</main>
+
+		<footer class="footer">
+			<p>© <span id="year"></span> Bora Rotana.</p>
+		</footer>
+	</div>
+
+	<script>
+		const yearNode = document.getElementById('year');
+		const progressBars = document.querySelectorAll('.progress-bar');
+		const revealNodes = document.querySelectorAll('.reveal');
+			const copyEmailButton = document.getElementById('copyEmailButton');
+			const toast = document.getElementById('toast');
+			const tabs = document.querySelectorAll('.tab');
+			const sections = document.querySelectorAll('.profile-section');
+			const sectionIds = ['overview', 'projects', 'posts'];
+
+		if (yearNode) {
+			yearNode.textContent = new Date().getFullYear();
+		}
+
+		requestAnimationFrame(() => {
+			progressBars.forEach((bar) => {
+				const value = Number(bar.dataset.progress || 0);
+				const fill = bar.querySelector('span');
+
+				if (fill) {
+					fill.style.width = `${Math.max(0, Math.min(value, 100))}%`;
+				}
+			});
+		});
+
+		if ('IntersectionObserver' in window) {
+			const observer = new IntersectionObserver((entries, obs) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('is-visible');
+						obs.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.16 });
+
+			revealNodes.forEach((node) => observer.observe(node));
+		} else {
+			revealNodes.forEach((node) => node.classList.add('is-visible'));
+		}
+
+			const showToast = (message) => {
+				if (!toast) return;
+				toast.textContent = message;
+				toast.classList.add('is-visible');
+				window.clearTimeout(showToast.hideTimer);
+				showToast.hideTimer = window.setTimeout(() => {
+					toast.classList.remove('is-visible');
+				}, 1800);
+			};
+
+			const setActiveTab = (targetId) => {
+				tabs.forEach((tab) => {
+					const isActive = tab.getAttribute('href') === `#${targetId}`;
+					tab.classList.toggle('is-active', isActive);
+				});
+			};
+
+			tabs.forEach((tab) => {
+				tab.addEventListener('click', (event) => {
+					event.preventDefault();
+					const targetId = tab.getAttribute('href').slice(1);
+					setActiveTab(targetId);
+					document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				});
+			});
+
+			window.addEventListener('hashchange', () => {
+				const targetId = sectionIds.includes(window.location.hash.slice(1)) ? window.location.hash.slice(1) : 'overview';
+				setActiveTab(targetId);
+			});
+
+			setActiveTab(sectionIds.includes(window.location.hash.slice(1)) ? window.location.hash.slice(1) : 'overview');
+
+			if (copyEmailButton) {
+				copyEmailButton.addEventListener('click', async () => {
+					try {
+						await navigator.clipboard.writeText('dev.rotana@gmail.com');
+						showToast('Email copied to clipboard');
+					} catch (error) {
+						showToast('Copy failed, email is dev.rotana@gmail.com');
+					}
+				});
+			}
+	</script>
+</body>
+</html>
