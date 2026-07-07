@@ -162,7 +162,7 @@
 			height: 126px;
 			background:
 				linear-gradient(180deg, rgba(18, 24, 38, 0.18), rgba(18, 24, 38, 0.36)),
-				url('src/data/cover_files/banner-v2.png') center center / cover no-repeat;
+				url('data/cover_files/banner-v2.png') center center / cover no-repeat;
 		}
 
 		.profile-meta {
@@ -377,6 +377,39 @@
 			font-size: 0.78rem;
 			letter-spacing: 0.16em;
 			text-transform: uppercase;
+		}
+
+		.hero-visual {
+    		display: flex;
+ 		    justify-content: center;
+  		    align-items: center;
+		}
+
+		.code-preview {
+  		  	padding: 1rem;
+  		  	font-family: 'Fira Code', monospace;
+    		font-size: 0.9rem;
+    		line-height: 1.6;
+    		animation: fadeInUp 1s ease-out 0.2s both;
+		}
+
+		.code-line {
+    		color: #94a3b8;
+		}
+
+		.code-line:first-child {
+    		color: #3b82f6;
+		}
+
+			.code-line:nth-child(2),
+			.code-line:nth-child(3),
+			.code-line:nth-child(4) {
+    		color: #10b981;
+    		margin-left: 1rem;
+		}
+
+		.code-line:last-child {
+    		color: #f59e0b;
 		}
 
 		.section-heading {
@@ -763,6 +796,13 @@
 			.profile-meta {
 				margin-top: -36px;
 			}
+
+			.profile-title-row h1 {
+				background: linear-gradient(180deg, #2d1808 0 50%, #e7e5e5 50% 100%);
+				-webkit-background-clip: text;
+				background-clip: text;
+			color: transparent;
+			}
 		}
 
 		@media (max-width: 720px) {
@@ -778,6 +818,13 @@
 			.profile-meta {
 				padding: 0 18px 18px;
 				margin-top: -30px;
+			}
+
+			.profile-title-row h1 {
+				background: linear-gradient(180deg, #2d1808 0 50%, #e7e5e5 50% 100%);
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
 			}
 
 			.contact-grid {
@@ -836,7 +883,7 @@
 				<div class="profile-meta">
 					<div class="avatar-wrap">
 						<div class="avatar-ring">
-							<img class="avatar" src="src/data/Pnlu.png" alt="Bora Rotana avatar" />
+							<img class="avatar" src="data/Pnlu.png" alt="Bora Rotana avatar" />
 						</div>
 					</div>
 
@@ -878,7 +925,7 @@
 					<div class="profile-rank" aria-label="Profile stats">
 						<div>
 							<p class="muted-label">Level</p>
-							<strong>Beginner</strong>
+							<strong>Intermediate</strong>
 						</div>
 						<div>
 							<p class="muted-label">Rank</p>
@@ -914,8 +961,17 @@
 						<h2>RANK FOCUS</h2>
 					</div>
 
-					<p class="empty-state">Frontend development focus with responsive interfaces, polished layouts, and product-oriented web experiences.</p>
-
+					<div class="hero-visual">
+                		<div class="code-preview">
+                    		<div class="code-line">const engineer = {</div>
+                    		<div class="code-line indent">name: "BORA ROTANA",</div>
+                    		<div class="code-line indent">role: "Engineering Student",</div>
+                    		<div class="code-line indent">skills: ["React", "Node.js", "Python"],</div>
+                    		<div class="code-line indent">passionate: true</div>
+                    		<div class="code-line">};</div>
+                		</div>
+            		</div>
+					
 					<div class="section-heading compact-heading">
 						<p class="eyebrow">Technical Stack</p>
 						<h2>SKILLS</h2>
@@ -1050,7 +1106,7 @@
 		</main>
 
 		<footer class="footer">
-			<p>© <span id="year"></span> Bora Rotana.</p>
+			<p>© <span id="year"></span> BORA ROTANA. All rights reserved.</p>
 		</footer>
 	</div>
 
